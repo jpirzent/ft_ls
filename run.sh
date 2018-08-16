@@ -1,1 +1,1 @@
-echo "my ft_ls\n" && ./ft_ls && wait && echo "sys ls\n" && ls
+echo "my ft_ls\n" && ./a.out -a && wait && echo "sys ls\n" && ls -a

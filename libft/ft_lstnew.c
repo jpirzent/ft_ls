@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 14:48:54 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/16 17:42:48 by jpirzent         ###   ########.fr       */
+/*   Created: 2018/07/09 11:35:47 by jpirzent          #+#    #+#             */
+/*   Updated: 2018/07/09 11:59:27 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
-int		main(int argc, char **argv)
-{
-	DIR				*dir;
-	struct dirent	*sd;
-	t_fnames		*fn;
-	size_t			fc;
+#include "libft.h"
 
-	fc = 0;
-	fn = NULL;
-//	if (argc == 1)
-		dir = opendir(".");
-//	else
-//		dir = opendir(argv[argc - 1]);
-	if (dir == NULL)
+t_list	*ft_lstnew(void *content, size_t content_size)
+{
+	t_list *new;
+
+	if (!(new = (t_list*)malloc(sizeof(t_list) * (content_size))))
+		return (NULL);
+	if (content && content_size)
 	{
-		printf("ls: %s: No such file or directory.\n", argv[argc - 1]);
-		exit(1);
+		new->content = (void*)malloc(content_size);
+		ft_memmove(new->content, content, content_size);
+		new->content_size = content_size;
 	}
-	while ((sd=readdir(dir)) != NULL)
+	else
 	{
-		ft_addlink(&fn, sd->d_name);
-		fc++;
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	flags(fn, argv[1], fc);
+	new->next = NULL;
+	return (new);
 }

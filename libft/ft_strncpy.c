@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 14:48:54 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/16 17:42:48 by jpirzent         ###   ########.fr       */
+/*   Created: 2018/05/29 11:02:43 by jpirzent          #+#    #+#             */
+/*   Updated: 2018/06/12 14:45:05 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
-int		main(int argc, char **argv)
-{
-	DIR				*dir;
-	struct dirent	*sd;
-	t_fnames		*fn;
-	size_t			fc;
+#include "libft.h"
 
-	fc = 0;
-	fn = NULL;
-//	if (argc == 1)
-		dir = opendir(".");
-//	else
-//		dir = opendir(argv[argc - 1]);
-	if (dir == NULL)
+char	*ft_strncpy(char *dest, const char *src, size_t len)
+{
+	size_t		i;
+
+	i = 0;
+	while (i < len && src[i] != '\0')
 	{
-		printf("ls: %s: No such file or directory.\n", argv[argc - 1]);
-		exit(1);
+		dest[i] = src[i];
+		i++;
 	}
-	while ((sd=readdir(dir)) != NULL)
+	while (i < len)
 	{
-		ft_addlink(&fn, sd->d_name);
-		fc++;
+		dest[i++] = '\0';
 	}
-	flags(fn, argv[1], fc);
+	return (dest);
 }
