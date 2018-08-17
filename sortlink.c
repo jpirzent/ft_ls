@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sortlink.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 14:48:54 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/17 16:32:02 by jpirzent         ###   ########.fr       */
+/*   Created: 2018/08/17 12:18:50 by jpirzent          #+#    #+#             */
+/*   Updated: 2018/08/17 12:40:52 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		main(int argc, char **argv)
+void	sortlink(t_fnames *fn)
 {
-	DIR				*dir;
-	t_dirent		*sd;
-	t_fnames		*fn;
+	t_fnames *tmp;
+	char	*s;
+	int		swapped;
 
-	fn = NULL;
-//	if (argc == 1)
-		dir = opendir(".");
-//	else
-//		dir = opendir(argv[argc - 1]);
-	if (dir == NULL)
+	swapped = 1;
+	while (swapped)
 	{
-		printf("ls: %s: No such file or directory.\n", argv[argc - 1]);
-		exit(1);
+		swapped = 0;
+		tmp = fn;
+		while (tmp->next)
+		{
+			if (ft_strcmp(tmp->name, tmp->next->name) > 0)
+			{
+				swapped = 1;
+				s = tmp->name;
+				tmp->name = tmp->next->name;
+				tmp->next->name = s;
+			}
+			tmp = tmp->next;
+		}
 	}
-	while ((sd = readdir(dir)) != NULL)
-	{
-		ft_addlink(&fn, sd->d_name);
-	}
-	sortlink(fn);
-	if (argc > 1)
-		flags(fn, argv[1]);
-	else
-		flags(fn, "normal");
 }
