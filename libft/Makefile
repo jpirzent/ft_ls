@@ -6,7 +6,7 @@
 #    By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/23 13:27:00 by jpirzent          #+#    #+#              #
-#    Updated: 2018/08/15 14:23:18 by jpirzent         ###   ########.fr        #
+#    Updated: 2018/08/20 16:30:20 by jpirzent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,20 +73,24 @@ FILES =	ft_isalpha.c \
 		ft_toupper.c \
 		ft_bzero.c \
 
-OBJECT = $(FILES:.c=.o)
+OBJECT = $(FILES:%.c=%.o)
 
 all: $(NAME) 
 
 $(NAME): $(OBJECT)
-	gcc -Wall -Werror -Wextra -I. -c $(FILES)
-	ar rcs $(NAME) $(OBJECT)
-	ranlib $(NAME)
+	@gcc -Wall -Werror -Wextra -I. -c $(FILES)
+	@ar rcs $(NAME) $(OBJECT)
+	@ranlib $(NAME)
+	@echo "\x1b[31m"MAKING"\x1b[0m" libft.a
+
+$(OBJECT):
+	@gcc -Wall -Werror -Wextra -I. -c $(FILES)
 
 clean:
-	/bin/rm -rf *.o
+	@/bin/rm -rf *.o
 
 fclean: clean
-	/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(NAME)
 
 re: fclean all
 
