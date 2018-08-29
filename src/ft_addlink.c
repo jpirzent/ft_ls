@@ -6,7 +6,7 @@
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 10:35:44 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/20 15:57:38 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/08/29 12:35:36 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,5 @@ t_fnames	*ft_addlink(t_fnames **start, char *content, struct stat *buff)
 	new->next->data.fsize = buff->st_size;
 	return (new->next);
 }
+
+

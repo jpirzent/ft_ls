@@ -6,7 +6,7 @@
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:07:57 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/20 16:48:28 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/08/29 12:39:41 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	flags(t_fnames *fn, char *flag)
 	if (ft_strcmp(flag, "-a") == 0)
 		while (fn)
 		{
+		//	printf("fn->name:	%s fn->address:	%p\n", fn->data.name, fn);
 			printa(fn->data.name);
 			fn = fn->next;
 		}
