@@ -6,7 +6,7 @@
 #    By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/20 12:00:30 by jpirzent          #+#    #+#              #
-#    Updated: 2018/08/20 16:30:56 by jpirzent         ###   ########.fr        #
+#    Updated: 2018/08/29 15:32:01 by jpirzent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_FILES = flags.c\
 			sortlink.c\
 			ft_rights.c\
 			ft_format_t.c\
+			ft_count.c\
 
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 
@@ -44,14 +45,18 @@ CC = gcc $(CCFLAGS)
 LIBF = $(LIB_PATH)libft.a
 PRF = $(PRF_PATH)libftprintf.a
 
-# MAKE COMMANDS #
-all: $(NAME)
-
 $(NAME): $(OBJ)
 	@make -C $(LIB_PATH)
 	@make -C $(PRF_PATH)
 	@$(CC) -o $@ $(LIBF) $(PRF) $(OBJ)
 	@echo "\033[92m"---COMPILED SUCCESFULLY---"\033[0m"
+
+
+# MAKE COMMANDS #
+all: temp $(NAME)
+
+temp:
+	@mkdir -p $(OBJ_PATH)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@$(CC) -I $(INC_PATH) -o $@ -c $<

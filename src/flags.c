@@ -6,7 +6,7 @@
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 17:07:57 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/29 12:39:41 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/08/29 15:29:54 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	flags(t_fnames *fn, char *flag)
 	if (ft_strcmp(flag, "-a") == 0)
 		while (fn)
 		{
-		//	printf("fn->name:	%s fn->address:	%p\n", fn->data.name, fn);
 			printa(fn->data.name);
 			fn = fn->next;
 		}
@@ -36,11 +35,14 @@ void	flags(t_fnames *fn, char *flag)
 			fn = fn->next;
 		}
 	else if (ft_strcmp(flag, "-l") == 0)
+	{
+		printf("total %D\n", ft_blkcnt(&fn));
 		while (fn)
 		{
 			printl(fn);
 			fn = fn->next;
 		}
+	}
 	else
 		ft_printf("ls:\tillegal option\nusage:\tft_ls [-alrt] [file ...]\n");
 }

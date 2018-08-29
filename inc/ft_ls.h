@@ -6,7 +6,7 @@
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 10:32:16 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/20 16:28:07 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/08/29 15:29:43 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 typedef struct	s_data
 {
+	int				bsize;
 	char			*rwr;
 	unsigned short	links;
 	char			*owner;
@@ -56,4 +57,6 @@ void			ch_sortlink(t_fnames *fn, char *flags);
 
 char			*findrwr(struct stat *buff);
 char			*ft_format_t(char *s);
+
+int				ft_blkcnt(t_fnames **fn);
 #endif
