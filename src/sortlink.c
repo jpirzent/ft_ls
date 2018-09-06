@@ -6,7 +6,7 @@
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 12:18:50 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/29 15:01:41 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/04 15:45:12 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	sortlink(t_fnames *fn)
 	{
 		swapped = 0;
 		tmp = fn;
-		while (tmp->next)
+		while (tmp && tmp->next)
 		{
 			if (ft_strcmp(tmp->data.name, tmp->next->data.name) > 0)
 			{

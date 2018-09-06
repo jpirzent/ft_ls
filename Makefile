@@ -6,7 +6,7 @@
 #    By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/20 12:00:30 by jpirzent          #+#    #+#              #
-#    Updated: 2018/08/29 15:32:01 by jpirzent         ###   ########.fr        #
+#    Updated: 2018/09/06 14:23:38 by jpirzent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_FILES = flags.c\
 			main.c\
 			print.c\
 			sort_t.c\
+			lstfree.c\
 			sortlink.c\
 			ft_rights.c\
 			ft_format_t.c\

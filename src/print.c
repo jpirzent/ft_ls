@@ -6,16 +6,20 @@
 /*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 09:07:14 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/08/20 16:12:47 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/04 09:49:19 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	printa(char *s)
+void	printa(t_fnames *fn)
 {
-	ft_putstr(s);
-	ft_putchar('\n');
+	while (fn)
+	{
+		ft_putstr(fn->data.name);
+		ft_putchar('\n');
+		fn = fn->next;
+	}
 }
 
 void	printn(char *s)
